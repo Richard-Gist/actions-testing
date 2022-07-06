@@ -25,7 +25,7 @@ jobs:
         run: fastlane test
           
   lint:
-    if: ${{ github.event.pull_request.merged == true || github.input.override == true }}
+    if: ${{ github.event.pull_request.merged == true || inputs.override == true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
