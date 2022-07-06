@@ -43,8 +43,6 @@ jobs:
         run: fastlane test
 
   begin_release:
-    if: github.event.pull_request.merged == true
-    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
