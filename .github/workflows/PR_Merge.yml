@@ -1,0 +1,46 @@
+name: Merged_Pull_Request
+
+on:
+  workflow_dispatch:
+    input:
+      override:
+        description: 'Run for manual dispatch'
+        type: boolean
+        required: true
+        default: true
+  pull_request:
+    types:
+    - closed
+    branches:
+    - develop
+
+jobs:
+  test:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Tests
+        run: fastlane test
+          
+  lint:
+    if: ${{ github.event.pull_request.merged == true || github.input.override == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run SwiftLint
+        run: fastlane lint
+
+  begin_release:
+    if: github.event.pull_request.merged == true
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: version bump
+        run: fastlane trigger_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

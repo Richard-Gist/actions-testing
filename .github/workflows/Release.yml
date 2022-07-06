@@ -1,0 +1,17 @@
+name: TestFlight_Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - develop
+
+jobs:
+  testflight:
+    if: ${{ startsWith(github.event.commits[0].message, 'Bump build to') || startsWith(github.event.commits[0].message, 'Bump version to') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Release
+        run: fastlane release
