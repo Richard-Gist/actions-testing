@@ -12,10 +12,17 @@ platform :ios do
 
   lane :trigger_release do 
     UI.message "trigger_release complete"
+    increment_build_number
+    UI.message "Incrementing to build #{lane_context[SharedValues::BUILD_NUMBER]}"
+    
+    commit_version_bump(message: "Bump build to #{lane_context[SharedValues::BUILD_NUMBER]}",
+                        xcodeproj: "ActionTesting.xcodeproj")
+
+    push_to_git_remote
   end
 
   lane :release do 
-    UI.message "trigger_release complete"
+    UI.message "release complete"
   end
 
   # before_all do
