@@ -2,7 +2,7 @@ name: Merged_Pull_Request
 
 on:
   workflow_dispatch:
-    input:
+    inputs:
       override:
         description: 'Run for manual dispatch'
         type: boolean
