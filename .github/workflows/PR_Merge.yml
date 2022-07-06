@@ -52,4 +52,4 @@ jobs:
       - name: version bump
         run: fastlane trigger_release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
