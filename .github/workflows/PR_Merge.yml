@@ -43,7 +43,7 @@ jobs:
         run: fastlane test
 
   begin_release:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       
