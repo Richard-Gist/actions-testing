@@ -46,8 +46,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
       
       - name: version bump
         run: fastlane trigger_release
-        env:
-          GITHUB_TOKEN: "is this even used?"
