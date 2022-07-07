@@ -50,4 +50,4 @@ jobs:
       - name: version bump
         run: fastlane trigger_release
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: "is this even used?"
