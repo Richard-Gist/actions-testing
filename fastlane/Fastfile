@@ -19,7 +19,7 @@ platform :ios do
                         xcodeproj: "ActionTesting.xcodeproj")
 
 #     push_to_git_remote
-    sh('git push')
+    sh('git push https://${ENV["PAT"]}@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git')
   end
 
   lane :release do 
