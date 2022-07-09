@@ -45,10 +45,7 @@ jobs:
   begin_release:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: ${{ github.repository }}
-          token: ${{ secrets.PAT }}
+      - uses: actions/checkout@v2
       
       - name: version bump
         run: fastlane trigger_release
