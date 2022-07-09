@@ -52,3 +52,5 @@ jobs:
       
       - name: version bump
         run: fastlane trigger_release
+        env:
+          PAT: ${{ secrets.PAT }}
