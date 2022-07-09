@@ -21,7 +21,7 @@ platform :ios do
 #     push_to_git_remote
     sh("echo PAT - $PAT - $ENV['PAT'] - ${ENV['PAT']}")
     sh("echo REPO - `git remote -v`")
-#     sh('git push https://${ENV["PAT"]}@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git')
+    sh('git push https://$PAT@github.com/Richard-Gist/actions-testing.git')
   end
 
   lane :release do 
