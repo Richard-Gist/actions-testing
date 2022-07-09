@@ -18,7 +18,7 @@ platform :ios do
 #     commit_version_bump(message: "Bump build to #{lane_context[SharedValues::BUILD_NUMBER]}",
 #                         xcodeproj: "ActionTesting.xcodeproj")
     ENV["BUILDY"] = lane_context[SharedValues::BUILD_NUMBER]
-    sh('git commit -am 'Bump build to "Bump build to $BUILDY"')
+    sh('git commit -am "Bump build to $BUILDY"')
 
 #     push_to_git_remote
     sh("echo PAT - $PAT - $ENV['PAT'] - ${ENV['PAT']}")
