@@ -46,8 +46,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ssh-key: PushBump
+#         with:
+#           ssh-key: PushBump
       
       - name: version bump
         run: fastlane trigger_release
