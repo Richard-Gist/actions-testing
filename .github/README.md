@@ -12,4 +12,4 @@ So maybe then I can build out the root page here? And that would mean you could 
 [Link to index]({% link readme.md %})
 [Link to sub index]({% link docs/index.md %})
 
-bump build 3
+bump build 4
