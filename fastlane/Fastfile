@@ -31,6 +31,10 @@ platform :ios do
     starting_sha = `git log --oneline --no-decorate --skip=1 --grep "Bump build to" --max-count=1 --pretty=format:"%h"`
     # excluding commits with "Bump build to", gather all commits since starting sha and now
     changes = `git log #{starting_sha}..HEAD --oneline --no-decorate --grep "Bump build to" --invert-grep`
+    if changes == "" {
+      UI.message "No changes found using current commit message"
+      changes = `git log --oneline --no-decorate --max-count=1`
+    }
     UI.header "Uploading TestFlight build"
     UI.important "Changelog will be:"
     UI.message changes
