@@ -9,7 +9,7 @@ on:
         default: true # This is only set during a manual dispatch
   push:
     branches:
-    - develop
+    - main
 
 jobs:
   testflight:
