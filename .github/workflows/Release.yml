@@ -2,13 +2,18 @@ name: TestFlight_Release
 
 on:
   workflow_dispatch:
+    inputs:
+      override:
+        description: 'Run for manual dispatch'
+        type: boolean
+        default: true # This is only set during a manual dispatch
   push:
     branches:
     - develop
 
 jobs:
   testflight:
-    if: ${{ startsWith(github.event.commits[0].message, 'Bump build to') || startsWith(github.event.commits[0].message, 'Bump version to') }}
+    if: ${{ startsWith(github.event.commits[0].message, 'Bump build to') == true || startsWith(github.event.commits[0].message, 'Bump version to') == true || inputs.override == true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
